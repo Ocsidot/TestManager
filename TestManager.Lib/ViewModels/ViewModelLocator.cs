@@ -1,6 +1,8 @@
 ﻿using CommonServiceLocator;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
+using GalaSoft.MvvmLight.Views;
+using TestManager.Lib.Services;
 
 namespace TestManager.Lib.ViewModels
 {
@@ -29,6 +31,8 @@ namespace TestManager.Lib.ViewModels
             ////}
 
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<IViewService, ViewService>(true);
+            SimpleIoc.Default.Register<ITestDialogService, DialogService>(true);
         }
 
         public MainViewModel Main

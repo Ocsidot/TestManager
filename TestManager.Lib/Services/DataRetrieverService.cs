@@ -9,7 +9,7 @@ using TestManager.Lib.ViewModels;
 
 namespace TestManager.Lib.Services
 {
-    public class DataRetrieverService : IDataRetriever
+    internal class DataRetrieverService : IDataRetriever
     {
         public async Task<PostmanCollection[]> GetCollections(string path)
         {

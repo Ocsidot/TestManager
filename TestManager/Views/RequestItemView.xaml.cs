@@ -1,5 +1,4 @@
-﻿using CommonServiceLocator;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,23 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TestManager.Lib.Services;
-using TestManager.Lib.ViewModels;
-using TestManager.Views;
 
-namespace TestManager
+namespace TestManager.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for RequestItemView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class RequestItemView : UserControl
     {
-        public MainWindow()
+        public RequestItemView()
         {
             InitializeComponent();
-
-            var viewService = ServiceLocator.Current.GetInstance<IViewService>();
-            viewService.RegisterViewFor<RequestItem>(typeof(RequestItemView));
         }
     }
 }

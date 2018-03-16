@@ -1,8 +1,11 @@
-﻿using System;
+﻿using CommonServiceLocator;
+using GalaSoft.MvvmLight.Command;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestManager.Lib.Services;
 
 namespace TestManager.Lib.ViewModels
 {
@@ -10,6 +13,7 @@ namespace TestManager.Lib.ViewModels
     {
         private int _numberOfTests;
 
+        #region Properties
         public int NumberOfTests
         {
             get { return _numberOfTests; }
@@ -23,6 +27,43 @@ namespace TestManager.Lib.ViewModels
                 RaisePropertyChanged("NumberOfTests");
             }
         }
+
+        private ITestDialogService DialogService
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<ITestDialogService>();
+            }
+        }
+
+        public Event PreRequest
+        {
+            get { return this.Events.FirstOrDefault(e => e.ListenType == ListenType.Prerequest); }
+        }
+
+        public Event Test
+        {
+            get { return this.Events.FirstOrDefault(e => e.ListenType == ListenType.Test); }
+        }
+
+        #endregion
+
+        #region Commands
+
+        private RelayCommand _showInfoCommand;
+        public RelayCommand ShowInfoCommand
+        {
+            get
+            {
+                return _showInfoCommand ??
+                    (_showInfoCommand = new RelayCommand(async () =>
+                    {
+                        await DialogService.ShowDialogFor(this);
+                    }));
+            }
+        }
+
+        #endregion
 
         internal override void RefreshInformation()
         {

@@ -46,8 +46,7 @@
                     <StackPanel Orientation="Horizontal">
                         <StackPanel.ContextMenu>
                             <ContextMenu>
-                                <MenuItem Command="{Binding Parent.PlacementTarget.Tag.ShowInfoCommand, 
-                                            RelativeSource={RelativeSource Self}}"
+                                <MenuItem Command="{Binding ShowInfoCommand}"
                                           Header="Get request info">
                                     <MenuItem.Icon>
                                         <fa:ImageAwesome Icon="InfoCircle" Height="15" />

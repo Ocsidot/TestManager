@@ -5,13 +5,23 @@
              d1p1:Ignorable="d"   
              xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:TestManager.Lib.ViewModels;assembly=TestManager.Lib"
-             xmlns:local="clr-namespace:TestManager"
+             xmlns:converter="clr-namespace:TestManager.Converters"
+             xmlns:libConverters="clr-namespace:TestManager.Lib.Converters;assembly=TestManager.Lib"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
 
             <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" />
 
+            <converter:HttpMethodToVisibilityConverter x:Key="GetVisibilityConverter" SelectedMethod="Get" />
+            <converter:HttpMethodToVisibilityConverter x:Key="PostVisibilityConverter" SelectedMethod="Post" />
+
+            <converter:HttpMethodToBoolConverter x:Key="GetBoolConverter" SelectedMethod="Get" />
+            <converter:HttpMethodToBoolConverter x:Key="PostBoolConverter" SelectedMethod="Post" />
+
+            <libConverters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+            <libConverters:LengthToVisibilityConverter x:Key="LengthToVisibilityConverter" />
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>
